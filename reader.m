@@ -1,9 +1,9 @@
-function str = reader()
+function [text_list, freq_matrix] = reader()
   text_list = [];
   freq_matrix = [];
   document_list = {"test1.txt"; "test2.txt"};
   for i = 1:length(document_list)
-    text = textread(document_list{i}, "%s"),;
+    text = textread(document_list{i}, "%s");,
     % add a column to freq_matrix for each word already in freq_matrix
     freq_matrix = [freq_matrix, zeros(rows(freq_matrix), 1)];
     for j = 1:length(text)
@@ -25,5 +25,4 @@ function str = reader()
       end
     endfor
   endfor
-  text_list
-  freq_matrix
+
