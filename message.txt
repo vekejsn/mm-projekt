@@ -1,0 +1,235 @@
+```
+
+>> A = [1 1 1 1 0 0 0; 0 0 1 0 1 1 1]
+A =
+
+   1   1   1   1   0   0   0
+   0   0   1   0   1   1   1
+
+>> A = [1 1 1 1 0 0 0; 0 0 1 0 1 1 1]
+>> A'
+ans =
+
+   1   0
+   1   0
+   1   1
+   1   0
+   0   1
+   0   1
+   0   1
+
+>> A
+A =
+
+   1   1   1   1   0   0   0
+   0   0   1   0   1   1   1
+
+>> A = A'
+A =
+
+   1   0
+   1   0
+   1   1
+   1   0
+   0   1
+   0   1
+   0   1
+
+>> [T, S, D] = svd(A, 'econ')
+T =
+
+  -3.1623e-01  -4.0825e-01
+  -3.1623e-01  -4.0825e-01
+  -6.3246e-01   1.6653e-16
+  -3.1623e-01  -4.0825e-01
+  -3.1623e-01   4.0825e-01
+  -3.1623e-01   4.0825e-01
+  -3.1623e-01   4.0825e-01
+
+S =
+
+Diagonal Matrix
+
+   2.2361        0
+        0   1.7321
+
+D =
+
+  -0.7071  -0.7071
+  -0.7071   0.7071
+
+>> q = [0 0 0 0 0 1 0 0 ]
+q =
+
+   0   0   0   0   0   1   0   0
+
+>> q=https://cse.msu.edu/~cse960/Papers/LSI/LSI.pdf
+>> q = [0 0 0 0 1 0 0]
+q =
+
+   0   0   0   0   1   0   0
+
+>> q = q'
+q =
+
+   0
+   0
+   0
+   0
+   1
+   0
+   0
+
+>> q * T
+error: operator *: nonconformant arguments (op1 is 7x1, op2 is 7x2)
+>> q *. T
+error: q used as variable and later as function
+>> q .* T
+ans =
+
+        0        0
+        0        0
+        0        0
+        0        0
+  -0.3162   0.4082
+        0        0
+        0        0
+
+>> q .* T * inv(S)
+ans =
+
+        0        0
+        0        0
+        0        0
+        0        0
+  -0.1414   0.2357
+        0        0
+        0        0
+
+>> q=[1 1 1 1 0 0 0]
+q =
+
+   1   1   1   1   0   0   0
+
+>> q = q'
+q =
+
+   1
+   1
+   1
+   1
+   0
+   0
+   0
+
+>> d = [1;0] * T * inv(S)
+error: operator *: nonconformant arguments (op1 is 2x1, op2 is 7x2)
+>> d = [1;0] .* T .* inv(S)
+error: product: nonconformant arguments (op1 is 2x1, op2 is 7x2)
+>> d = [1 0] .* T .* inv(S)
+error: product: nonconformant arguments (op1 is 7x2, op2 is 2x2)
+>> d = [1 0] .* T * inv(S)
+d =
+
+  -0.1414        0
+  -0.1414        0
+  -0.2828        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+
+>> q
+q =
+
+   1
+   1
+   1
+   1
+   0
+   0
+   0
+
+>> d = [1 0]' .* T * inv(S)
+error: product: nonconformant arguments (op1 is 2x1, op2 is 7x2)
+>> d = [1 0]' .* T * inv(S)
+error: product: nonconformant arguments (op1 is 2x1, op2 is 7x2)
+>> d = [1 0] .* T * inv(S)
+d =
+
+  -0.1414        0
+  -0.1414        0
+  -0.2828        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+
+>> d = [1 0] * T * inv(S)
+error: operator *: nonconformant arguments (op1 is 1x2, op2 is 7x2)
+>> d = [1 0] .* T * inv(S)
+d =
+
+  -0.1414        0
+  -0.1414        0
+  -0.2828        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+  -0.1414        0
+
+>> d = [1 0] .* T * inv(S)
+>> t
+error: 't' undefined near line 1, column 1
+>> T
+T =
+
+  -3.1623e-01  -4.0825e-01
+  -3.1623e-01  -4.0825e-01
+  -6.3246e-01   1.6653e-16
+  -3.1623e-01  -4.0825e-01
+  -3.1623e-01   4.0825e-01
+  -3.1623e-01   4.0825e-01
+  -3.1623e-01   4.0825e-01
+
+>> d = [1 1 1 1 0 0 0]' .* T * inv(S)
+d =
+
+  -0.1414  -0.2357
+  -0.1414  -0.2357
+  -0.2828   0.0000
+  -0.1414  -0.2357
+        0        0
+        0        0
+        0        0
+
+>> d = [1 1 1 1 0 0 0]' * T * inv(S)
+error: operator *: nonconformant arguments (op1 is 7x1, op2 is 7x2)
+>> d = [1 1 1 1 0 0 0]' * T * inv(S)
+error: operator *: nonconformant arguments (op1 is 7x1, op2 is 7x2)
+>> d = [1 1 1 1 0 0 0]' .* T * inv(S)
+d =
+
+  -0.1414  -0.2357
+  -0.1414  -0.2357
+  -0.2828   0.0000
+  -0.1414  -0.2357
+        0        0
+        0        0
+        0        0
+
+>> d = [1 1 1 1 0 0 0] .* T * inv(S)
+error: product: nonconformant arguments (op1 is 1x7, op2 is 7x2)
+>> d = [1 1 1 1 0 0 0] * T * inv(S)
+d =
+
+  -0.7071  -0.7071
+
+>> qurey = q * T * inv(S)
+error: operator *: nonconformant arguments (op1 is 7x1, op2 is 7x2)
+>> qurey = q' * T * inv(S)
+qurey =
+
+  -0.7071  -0.7071
+
+>>`````
