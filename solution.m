@@ -1,11 +1,11 @@
 
-query = ["brown"; "brown"; "fox"];
+query = ["burek", "fox"];
 query = cellstr(query);
 
 
 [word_to_index, freq_matrix, global_freq] = reader();
 
-[T, S, D] = svd(freq_matrix, 'econ');
+[T, S, D] = svd(freq_matrix, 'econ')
 
 query_vector = zeros(length(word_to_index), 1);
 
@@ -17,4 +17,10 @@ for i=1:length(word_to_index)
     endfor
 endfor
 
-query_vector
+
+query_vector = query_vector' * T * inv(S);
+for i=1:size(freq_matrix)(2)
+  d = freq_matrix(:,i)' * T * inv(S)
+  cosSim = sum(query_vector.*d)/sqrt(sum(query_vector.^2)*sum(d.^2))
+endfor
+
