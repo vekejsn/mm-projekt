@@ -1,6 +1,7 @@
-function [text_list, freq_matrix] = reader()
+function [text_list, freq_matrix, global_freq] = reader()
   text_list = [];
   freq_matrix = [];
+  global_freq = [];
   document_list = {"test1.txt"; "test2.txt"};
   for i = 1:length(document_list)
     text = textread(document_list{i}, "%s");,
@@ -19,10 +20,16 @@ function [text_list, freq_matrix] = reader()
         freq_matrix = [freq_matrix; zeros(1, columns(freq_matrix))];
         % increment by 1
         freq_matrix(end,i) = freq_matrix(end,i) + 1;
+        % add row to global_freq and increment by 1
+        global_freq = [global_freq; zeros(1, 1)];
+        global_freq(end,:) = global_freq(end,:) + 1;
       else
       % otherwise, increment the same index of the freq_matrix
       freq_matrix(strcmp(text_list,text(j,:)),i) = freq_matrix(strcmp(text_list,text(j,:)),i) + 1;
+      % increment global_freq
+      global_freq(strcmp(text_list,text(j,:))) = global_freq(strcmp(text_list,text(j,:))) + 1;
       end
     endfor
   endfor
-
+% end of reader function
+endfunction
