@@ -2,7 +2,7 @@ function [text_list, freq_matrix, global_freq] = reader()
   text_list = [];
   freq_matrix = [];
   global_freq = [];
-  document_list = {"test1.txt"; "test2.txt"};
+  document_list = {"tests/document1.txt"; "tests/document2.txt" ; "tests/document3.txt"};
   for i = 1:length(document_list)
     text = textread(document_list{i}, "%s");,
     % add a column to freq_matrix for each word already in freq_matrix
