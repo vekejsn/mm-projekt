@@ -1,8 +1,9 @@
-query = ["uro"];
+query = ["down" ; "down"];
 query = cellstr(query);
 
 [word_to_index, freq_matrix, global_freq] = reader();
 
+%[T, S, D] = svds(freq_matrix, 2);
 [T, S, D] = svd(freq_matrix, 'econ');
 
 query_vector = zeros(length(word_to_index), 1);
