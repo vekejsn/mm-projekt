@@ -13,6 +13,7 @@ function [text_list, freq_matrix, global_freq] = reader()
       text(j,:) = strrep(text(j,:),",","");
       text(j,:) = strrep(text(j,:),"!","");
       text(j,:) = strrep(text(j,:),"?","");
+      text(j,:) = strrep(text(j,:),":","");
       % check if this word is already contained in text_list, otherwise add it
       if ~any(strcmp(text_list,text(j,:)))
         text_list = [text_list; text(j,:)];
