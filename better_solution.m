@@ -3,6 +3,7 @@ query = cellstr(query);
 
 [word_to_index, freq_matrix, global_freq] = reader();
 
+freq_matrix = entropija(freq_matrix)
 %[T, S, D] = svds(freq_matrix, 2);
 [T, S, D] = svd(freq_matrix, 'econ');
 
