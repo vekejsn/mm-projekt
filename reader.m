@@ -2,9 +2,10 @@ function [text_list, freq_matrix, global_freq] = reader()
   text_list = [];
   freq_matrix = [];
   global_freq = [];
-  document_list = {"tests/document1.txt"; "tests/document2.txt" ; "tests/document3.txt"; "tests/document4.txt"; "tests/document5.txt" ; "tests/document6.txt"};
-  for i = 1:length(document_list)
-    text = textread(document_list{i}, "%s");,
+  num_of_docs = 260;
+  for i = 1:num_of_docs
+    doc_name = sprintf("tests/document%d.txt", i);
+    text = textread(doc_name, "%s");,
     % add a column to freq_matrix for each word already in freq_matrix
     freq_matrix = [freq_matrix, zeros(rows(freq_matrix), 1)];
     for j = 1:length(text)

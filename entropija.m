@@ -17,19 +17,3 @@ function [B] = entropija(A)
   endfor
 %   B
 endfunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
