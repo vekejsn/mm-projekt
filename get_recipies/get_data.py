@@ -14,7 +14,7 @@ def get_dish_instructions(url, file_num):
     # print(instructions)
     # print(file_num)
 
-    f = open(f"../tests/document{file_num}.txt", "a")
+    f = open(f"../project_code/tests/document{file_num}.txt", "a")
     dish_name = soup.find("h1").text.strip()
     f.write(dish_name + "\n")
     for line in instructions:
