@@ -2,9 +2,11 @@ query = ["cheese"; "sauce"; "french"];
 query = cellstr(query);
 
 [word_to_index, freq_matrix, global_freq] = reader();
+improved_freq_matrix = entropija(freq_matrix);
 
-%%[T, S, D] = svds(freq_matrix, 2);
-[T, S, D] = svd(freq_matrix, 'econ');
+% 100 should be enough
+[T, S, D] = svds(freq_matrix, 100);
+[T_b, S_b, D_b] = svds(improved_freq_matrix, 100);
 
 while (1== 1)
   usr_input = input("Enter search query: ", "s");
@@ -18,14 +20,25 @@ while (1== 1)
         endif
       endfor
   endfor
-  
+ 
+  % Firstly try with naive method
   similarities = zeros(size(freq_matrix)(2), 2);
-  query_vector = query_vector' * T * inv(S);
+  qv_T_invS = query_vector' * T * inv(S);
   for i=1:size(freq_matrix)(2)
     d = freq_matrix(:,i)' * T * inv(S);
-    cosSimilarity = sum(query_vector.*d)/sqrt(sum(query_vector.^2)*sum(d.^2));
+    cosSimilarity = sum(qv_T_invS.*d)/sqrt(sum(qv_T_invS.^2)*sum(d.^2));
     similarities(i, :) = [i, cosSimilarity];
   endfor 
+  sortrows(similarities, -2)
+  
+  % Then search with improved method
+  similarities = zeros(size(freq_matrix)(2), 2);
+  qv_T_invS = query_vector' * T_b * inv(S_b);
+  for i=1:size(freq_matrix)(2)
+    d = improved_freq_matrix(:,i)' * T_b * inv(S_b);
+    cosSimilarity = sum(qv_T_invS.*d)/sqrt(sum(qv_T_invS.^2)*sum(d.^2));
+    similarities(i, :) = [i, cosSimilarity];
+  endfor
 
   sortrows(similarities, -2)
 endwhile
