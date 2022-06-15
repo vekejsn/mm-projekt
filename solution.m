@@ -29,7 +29,10 @@ while (1== 1)
     cosSimilarity = sum(qv_T_invS.*d)/sqrt(sum(qv_T_invS.^2)*sum(d.^2));
     similarities(i, :) = [i, cosSimilarity];
   endfor 
-  sortrows(similarities, -2)
+  similarities = sortrows(similarities, -2);
+
+  printf("Naive method:\n");
+  similarities(1:10, :)
   
   % Then search with improved method
   similarities = zeros(size(freq_matrix)(2), 2);
@@ -40,7 +43,11 @@ while (1== 1)
     similarities(i, :) = [i, cosSimilarity];
   endfor
 
-  sortrows(similarities, -2)
+  similarities = sortrows(similarities, -2);
+
+  printf("Better method:\n");
+  similarities(1:10, :)
+
 endwhile
 
 
