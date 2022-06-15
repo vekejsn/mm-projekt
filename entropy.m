@@ -1,4 +1,4 @@
-function [B] = entropija(A)
+function [B] = entropy(A)
   B = zeros(size(A, 1), size(A, 2));
   for vrstica = 1:size(A, 1) 
     g_vrstica = sum(A(vrstica, :));

@@ -2,7 +2,7 @@ query = ["cheese"; "sauce"; "french"];
 query = cellstr(query);
 
 [word_to_index, freq_matrix, global_freq] = reader();
-improved_freq_matrix = entropija(freq_matrix);
+improved_freq_matrix = entropy(freq_matrix);
 
 % 100 should be enough
 [T, S, D] = svds(freq_matrix, 100);
