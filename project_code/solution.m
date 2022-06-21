@@ -5,8 +5,8 @@ query = cellstr(query);
 improved_freq_matrix = entropy(freq_matrix);
 
 % 100 should be enough
-[T, S, D] = svds(freq_matrix, 100);
-[T_b, S_b, D_b] = svds(improved_freq_matrix, 100);
+[T, S, D] = svds(freq_matrix, 20);
+[T_b, S_b, D_b] = svds(improved_freq_matrix, 20);
 
 while (1== 1)
   usr_input = input("Enter search query: ", "s");
@@ -47,6 +47,9 @@ while (1== 1)
 
   printf("Better method:\n");
   similarities(1:10, :)
+
+
+  h = bar( similarities(1:10, 1), similarities(1:10, 2))
 
 endwhile
 
