@@ -149,6 +149,8 @@ def plot(data_x, data_y, n_singular_value, colors):
 
   plt.savefig(f"./generated_graphs/graph_{n_singular_value}_singular_values_used.png")
 
+  plt.clf()
+
 def main():
   singular_values = [20, 50, 80, 100]
 
