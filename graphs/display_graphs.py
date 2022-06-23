@@ -102,13 +102,13 @@ data100 = {
 def prepare_data(dict_ix):
 
   match dict_ix:
-    case 0:
+    case 20:
       data = data20
-    case 1:
+    case 50:
       data = data50
-    case 2:
+    case 80:
       data = data80
-    case 3:
+    case 100:
       data = data100
     case default:
       print("Panic!")
@@ -155,7 +155,7 @@ def main():
   singular_values = [20, 50, 80, 100]
 
   for graph in range(4):
-    (data_x, data_y, colors) = prepare_data(dict_ix=graph)
+    (data_x, data_y, colors) = prepare_data(dict_ix=singular_values[graph])
     plot(data_x=data_x, data_y=data_y, colors=colors, n_singular_value=singular_values[graph])
 
 if __name__ == "__main__":
