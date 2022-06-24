@@ -11,8 +11,6 @@ def get_dish_instructions(url, file_num):
     if instructions == None:
         return 0
     instructions = instructions.find_all("li")
-    # print(instructions)
-    # print(file_num)
 
     f = open(f"../project_code/tests/document{file_num}.txt", "a")
     dish_name = soup.find("h1").text.strip()

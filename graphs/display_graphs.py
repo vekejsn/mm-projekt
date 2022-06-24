@@ -1,6 +1,5 @@
 #!/bin/python3
 
-from email.policy import default
 import matplotlib.pyplot as plt
 import collections
 
@@ -154,7 +153,7 @@ def plot(data_x, data_y, n_singular_value, colors):
 def main():
   singular_values = [20, 50, 80, 100]
 
-  for graph in range(4):
+  for graph in range(len(singular_values)):
     (data_x, data_y, colors) = prepare_data(dict_ix=singular_values[graph])
     plot(data_x=data_x, data_y=data_y, colors=colors, n_singular_value=singular_values[graph])
 

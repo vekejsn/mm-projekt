@@ -10,10 +10,8 @@ function [B] = entropy(A)
       endif
       G_i = G_i - (p_ij * log2(p_ij))/log2(size(A, 2));
     endfor
-    % G_i
     for stolpec = 1:size(A, 2)
       B(vrstica, stolpec) = G_i * log2(A(vrstica, stolpec) + 1);
     endfor
   endfor
-%   B
 endfunction
